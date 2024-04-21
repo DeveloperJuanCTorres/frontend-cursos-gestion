@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Lista de Estudiantes</h1>
+    <button type="button" (click)="newItem()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+      Nuevo
+    </button>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Edad</th>
+        <th>Cédula</th>
+        <th>Email</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.age }}</td>
+        <td>{{ item.card }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="editItem(item)" 
+            data-bs-toggle="modal" data-bs-target="#formModal">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-danger btn-sm mx-2" (click)="deleteItem(item)">
+            <i class="fas fa-trash"></i>
+          </button>
+          <button class="btn btn-info btn-sm" (click)="assignItem(item)"
+            data-bs-toggle="modal" data-bs-target="#formModalCourses">
+            <i class="fas fa-list-alt"></i> Cursos
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-form-student (listEvent)="getAllStudents()" [studentEdit]="studentEdit"></app-form-student>
+<app-courses-assign (listEvent)="getAllStudents()" [studentEdit]="studentEdit"></app-courses-assign>

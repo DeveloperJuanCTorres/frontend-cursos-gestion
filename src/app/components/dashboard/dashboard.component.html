@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Top estudiantes con más cursos</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Alumno</th>
+                <th># Cursos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of topStudents">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }} {{ item.last_name }}</td>
+                <td class="text-center">{{ item.courses_count }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Top cursos con más estudiantes</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Curso</th>
+                <th># Alumnos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of topCourses">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td class="text-center">{{ item.students_count }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">TOTAL</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><h6>Estudiantes</h6></td>
+                <td>{{ totalStudents }}</td>
+              </tr>
+              <tr>
+                <td><h6>Cursos</h6></td>
+                <td>{{ totalCourses }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

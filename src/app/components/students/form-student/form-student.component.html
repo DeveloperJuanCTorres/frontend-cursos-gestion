@@ -1,0 +1,43 @@
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <form  [formGroup]="formStudent" (ngSubmit)="saveItem()">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="formModalLabel">Estudiante</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="student.name" 
+              formControlName="name" name="name" required maxlength="100">
+          </div>
+          <div class="form-group">
+            <label for="last_name">Apellidos</label>
+            <input type="text" class="form-control" id="last_name" [(ngModel)]="student.last_name" 
+              formControlName="last_name" name="last_name" maxlength="100">
+          </div>
+          <div class="form-group mt-2">
+            <label for="age">Age <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="age" [(ngModel)]="student.age" 
+              formControlName="age" name="age" required min="18">
+          </div>
+          <div class="form-group mt-2">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="student.email" 
+              formControlName="email" name="email">
+          </div>
+          <div class="form-group mt-2">
+            <label for="cedula">Cédula <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="card" [(ngModel)]="student.card" 
+              formControlName="card" name="card" required maxlength="11">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!formStudent.valid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

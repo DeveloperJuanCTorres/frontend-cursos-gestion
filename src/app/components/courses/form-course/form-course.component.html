@@ -1,0 +1,40 @@
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <form [formGroup]="formCourses" (ngSubmit)="saveItem()">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="formModalLabel">Registrar Cursos</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Nombre <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="courses.name" formControlName="name" name="name" required maxlength="100">
+          </div>
+          <div class="form-group">
+            <label for="schedule">Horario</label>
+            <input type="text" class="form-control" id="schedule" [(ngModel)]="courses.schedule" formControlName="schedule" name="schedule" maxlength="100">
+          </div>
+          <div class="form-group mt-2">
+            <label for="date_ini">Fecha Inicio<span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="date_ini" [(ngModel)]="courses.date_ini" formControlName="date_ini" name="date_ini" >
+          </div>
+          <div class="form-group mt-2">
+            <label for="date_end">Fecha Fin</label>
+            <input type="date" class="form-control" id="date_end" [(ngModel)]="courses.date_end" formControlName="date_end" name="date_end">
+          </div>
+          <div class="form-group mt-2">
+            <label for="type">Tipo<span class="text-danger">*</span></label>
+            <select class="form-select" [(ngModel)]="courses.type" formControlName="type">
+              <option *ngFor="let option of options" [value]="option.value" >{{ option.label }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!formCourses.valid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
